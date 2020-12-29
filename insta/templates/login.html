@@ -86,7 +86,7 @@
     <form class="form-signin" method="post" action="/login">
         {% csrf_token %}
         <img class="mb-4" src="static/57e7dd464957a914ea898579ce203e7c1d22dfe055587740742a7dd3_640.png" alt="My image" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <h1 class="h3 mb-3 font-weight-normal">INSTAA</h1>
         <label for="inputEmail" class="sr-only">Username</label>
         <input type="text" id="inputEmail" name="username" class="form-control" placeholder="Username" required
             autofocus>
@@ -98,8 +98,8 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
-    </form>
+        <a href="/signup">Sign Up</a>
+    </form> 
 </body>
 
 </html>

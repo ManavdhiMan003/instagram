@@ -25,7 +25,7 @@ SECRET_KEY = '%g=-u2e8a=1%rar-g3^r4m6vnc&kgtpqd+r%y696d+@f4v!kd^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['instaa.pythonanywhere.com']
+ALLOWED_HOSTS = ['instaa.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -122,3 +122,4 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+

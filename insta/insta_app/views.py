@@ -2,12 +2,17 @@ from django.shortcuts import render,HttpResponse,redirect
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import logout,authenticate,login
+from django.contrib.auth.forms import UserCreationForm 
+from django.contrib import messages
+from .forms import UserRegisterForm
 # Create your views here.
 def index(request):
-    return HttpResponse("hello bruh")
+    if str(request.user) == 'AnonymousUser':
+        return redirect("/login")    
+    return render(request,'index.html')    
 # creating login userr
 def loginUser(request):
-    if request == "POST":
+    if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username,password=password)
@@ -15,9 +20,32 @@ def loginUser(request):
             login(request,user)
             return redirect("/")
         else:
-            render(request,'login.html')
+            return render(request,'login.html')
     return render(request,'login.html')
 def logoutUser(request):
-    return HttpResponse("hello up")
+    logout(request)
+    return redirect("/login")
 def signUser(request):
-    return HttpResponse("hello he")
+    if request.method == 'POST':
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        email = request.POST['email']
+
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                print('username taken')
+                return redirect('/')
+            elif  User.objects.filter(email=email).exists():
+                print('email taken')
+                return redirect('/')
+            else:    
+                user = User.objects.create_user(username=username,password=password1,email=email,first_name=first_name,last_name=last_name)
+                user.save()  
+                login(request,user)
+                return redirect("/")
+        else:
+            print('password not matched')                
+    return render(request,'signup.html')
