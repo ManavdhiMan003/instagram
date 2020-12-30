@@ -49,3 +49,11 @@ def signUser(request):
         else:
             print('password not matched')                
     return render(request,'signup.html')
+
+
+def about(request):
+    return render(request,'about.html')
+
+
+def contact(request):
+    return render(request,'contact.html')
