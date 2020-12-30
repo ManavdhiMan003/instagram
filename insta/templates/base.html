@@ -21,12 +21,34 @@
             font-size: 12px;
             transition-duration: 0.4s;
             cursor:pointer;
+            margin:2px;
         }
         .logout_button:hover {
             background-color: #98FB98; /* Green */
             color: white;
         }
         .logout_link{
+            text-decoration: none;
+            color: black;
+        }
+        .add_post{
+            background-color: white;
+            border-radius: 8px;
+            color: white;
+            padding: 14px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            transition-duration: 0.4s;
+            cursor:pointer;
+            margin:2px;
+        }
+        .add_post:hover {
+            background-color: #98FB98; /* Green */
+            color: white;
+        }
+        .post_link{
             text-decoration: none;
             color: black;
         }
@@ -51,6 +73,9 @@
       <form class="d-flex">
         <div class="logout_button">
             <a  class="logout_link" href="/login">Logout</a>
+        </div>
+        <div class="add_post">
+            <a  class="post_link" href="/post">New</a>
         </div>
       </form>
     </div>
