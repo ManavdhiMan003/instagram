@@ -9,8 +9,9 @@ from .forms import *
 # Create your views here.
 def index(request):
     if str(request.user) == 'AnonymousUser':
-        return redirect("/login")    
-    return render(request,'index.html')    
+        return redirect("/login")  
+    post=posts.objects.all()     
+    return render(request,'index.html',{"post":post})    
 # creating login userr
 def loginUser(request):
     if request.method == "POST":
@@ -68,5 +69,5 @@ def new(request):
             return redirect('/') 
     else: 
         form = Postform()
-    return render(request, 'new.html',{'form' : form}) 
+    return render(request, 'new.html',{"form" : form}) 
    
