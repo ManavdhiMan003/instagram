@@ -4,7 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout,authenticate,login
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib import messages
-from .forms import UserRegisterForm
+from insta_app.models import posts
+from .forms import *
 # Create your views here.
 def index(request):
     if str(request.user) == 'AnonymousUser':
@@ -57,3 +58,15 @@ def about(request):
 
 def contact(request):
     return render(request,'contact.html')
+
+
+def new(request): 
+    if request.method == 'POST': 
+        form=Postform(request.POST, request.FILES)
+        if form.is_valid(): 
+            form.save() 
+            return redirect('/') 
+    else: 
+        form = Postform()
+    return render(request, 'new.html',{'form' : form}) 
+   
