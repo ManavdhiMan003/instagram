@@ -1,5 +1,15 @@
 .mza{
     margin-top:5%;
     margin-left:25%;
-    max-width: 750px;;
+    margin-right: 25%;
+    max-width: 750px;
 }
+
+@media only screen and (max-width: 600px) {
+    .mza {
+        margin-top:5%;
+        margin-left:5%;
+        margin-right: 5%;
+        max-width: 750px;
+    }
+  }
